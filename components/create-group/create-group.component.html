@@ -1,0 +1,21 @@
+<ng-template #content let-modal>
+	<form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+		<div class="modal-header">
+			<h4 class="modal-title" id="modal-basic-title">Create group</h4>
+			<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+		</div>
+		<div class="modal-body">
+			<div class="mb-3">
+				<label for="name">Group name</label>
+				<div class="input-group">
+					<input id="name" class="form-control" name="name" type="text" ngModel/>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<input type="submit" class="btn btn-primary" value="Crear grupo">
+		</div>
+	</form>
+</ng-template>
+
+<button class="btn btn-success" (click)="open(content)">Crear Grupo</button>

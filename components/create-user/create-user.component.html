@@ -1,0 +1,30 @@
+<ng-template #content let-modal>
+	<form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+		<div class="modal-header">
+			<h4 class="modal-title" id="modal-basic-title">Crear usuario</h4>
+			<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+		</div>
+		<div class="modal-body">
+			<div class="mb-3">
+				<label for="name">Username</label>
+				<div class="input-group">
+					<input id="name" class="form-control" name="name" type="text" ngModel/>
+				</div>
+			</div>
+
+			<div class="mb-3">
+				<label for="group">Grupo</label>
+				<div class="input-group">
+					<select name="userGroup" ngModel>
+						<option *ngFor="let group of groups" value="{{ group.id }}">{{ group.name }}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<input type="submit" class="btn btn-primary" value="Crear usuario">
+		</div>
+	</form>
+</ng-template>
+
+<button class="btn btn-success" (click)="open(content)">Crear usuario</button>

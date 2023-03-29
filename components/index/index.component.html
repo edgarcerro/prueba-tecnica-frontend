@@ -1,0 +1,54 @@
+<div class="container">
+  <h1>Prueba Técnica Edgar Cerro</h1>
+  <div>
+    <h2>Lista de usuarios</h2>
+      <create-user [groups]="groups"></create-user>
+      <table class="table table-striped">
+        <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>User Group</th>
+                <th width="250px">Action</th>
+              </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td *ngIf="user.userGroup">(id: {{ user.userGroup.id }}) {{ user.userGroup.name }}</td>
+              <td *ngIf="!user.userGroup">Sin grupo asignado</td>
+              <td>
+                <view-user [id]="user.id"></view-user>
+                <edit-user [user]="user" [groups]="groups"></edit-user>
+                <button type="button" (click)="deleteUser(user.id)" class="btn btn-danger">Eliminar</button>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <div>
+    <h2>Lista de grupos</h2>
+   <create-group></create-group>
+    <table class="table table-striped">
+      <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th width="250px">Action</th>
+            </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let group of groups">
+              <td>{{ group.id }}</td>
+              <td>{{ group.name }}</td>
+              <td>
+                <edit-group [group]="group"></edit-group>
+                <button type="button" (click)="deleteGroup(group.id)" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+ </div>

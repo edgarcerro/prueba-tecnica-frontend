@@ -1,0 +1,24 @@
+<ng-template #content let-modal>
+		<div class="modal-header">
+			<h4 class="modal-title" id="modal-basic-title">Ver Usuario</h4>
+			<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+		</div>
+		<div class="modal-body">
+			<div class="mb-3">
+				<strong>ID:</strong>
+       			<p>{{ user.id }}</p>
+			</div>
+			<div class="mb-3">
+				<strong>Nombre:</strong>
+        		<p>{{ user.name }}</p>
+			</div>
+			<div class="mb-3">
+				<strong>Grupo:</strong>
+				<p *ngIf="user.userGroup">(id: {{ user.userGroup.id }}) {{ user.userGroup.name }}</p>
+              	<p *ngIf="!user.userGroup">Sin grupo asignado</p>
+			</div>
+		</div>
+		
+</ng-template>
+
+<button class="btn btn-success" (click)="open(content)">Ver</button>
